@@ -23,7 +23,7 @@ def run():
     print('Starting server...')
     server_address = ('', 8080)
     httpd = HTTPServer(server_address, MyHandler)
-    print('Server started!')
+    print('Server has just started!')
     httpd.serve_forever()
 
 if __name__ == '__main__':
