@@ -1,4 +1,6 @@
-GitLab Server assigns pipeline jobs to available Runners, gitlab.com manages instances. GitLab offers multiple Runners also maintained by GitLab, these are available to all users on gitlab.com
+# python-demoapp-gitlab
+
+- GitLab Server assigns pipeline jobs to available Runners, gitlab.com manages instances. GitLab offers multiple Runners also maintained by GitLab, these are available to all users on gitlab.com
 
 In this hands-on we do not need to have any congiguration, we will use free features
 
@@ -28,9 +30,9 @@ In this hands-on we do not need to have any congiguration, we will use free feat
 run_test:
   variables:
     JOB__TEST_VAR: "LEVENT"
-  image: python:3.9-slim-buster # bu image içinde python ve pip kurulu, içinde python application çalışacak Runner'ın image'i, yoksa gitlab deafult olarak Runner'ları ruby image'dan ayağa kaldırır. Dockerfile içerisindeki image ismini kullanabilirsin
+  image: python:3.9-slim-buster # This image has `Python and pip pre-installed`, and it will serve as the Runner's image to run the Python application. Otherwise, GitLab by default starts Runners with a `Ruby-based` image. You can use the image name from the Dockerfile.
   before_script:
-    - apt-get update # uygulamayı deploy ederken kullandığımız container (yukarıdaki image'dan run olacak olan Runner container'ı) içerisinde
+    - apt-get update # The container we use to deploy the application (the Runner container that will run from the image mentioned above) is included within this setup.
   script:
     - python --version
     - pip3 --version
@@ -40,8 +42,10 @@ run_test:
     - ls
     - whoami
 ```
+
 - Click `Commit changes`
-- Pipeline aşamalarını/joblarını buradan gözlemleyebilirsin`Build` -- `Pipelines`
+
+- You can monitor the pipeline stages/jobs from here : `Build` -- `Pipelines`
 
 
 # Part-2: Dockerfile and app.py
